@@ -1,4 +1,3 @@
-print("Hello Python")
-a=int(input('type number'))
-if (a==5):
-    print('hello')
+a,b=input().split()
+print(a)
+print(b)
