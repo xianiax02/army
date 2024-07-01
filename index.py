@@ -1,3 +1,6 @@
-a,b=input().split()
+a=ord(input())
 print(a)
-print(b)
+#print(a,b,sep=':')
+#파이썬은 print("%x"%변수명)
+#입력 진수 설정 int(a,16)
+#유니코드 값으로 변환 ord(input())
