@@ -1,6 +1,7 @@
-a,b=input().split(" ")
-a=int(a)&int(b)
-print(a)
+a=input()
+a=int(a)
+for i in range(a+1):
+    print(i)
 #print(a,b,sep=':')
 #파이썬은 print("%x"%변수명), %.2f ->소숫점 이하 두번쨰 자리까지의 정확도
 #입력 진수 설정 int(a,16)
@@ -12,3 +13,6 @@ print(a)
 #논리 결과는 True or False 로 산출됨
 #boolean 예약어: not, and , or
 #비트단위 연산자 not:~, and:&,or:|,xor:^,leftshift:<<,rightshift:>>
+#3항 연산 c=(a if (a>=b) else b)
+#print(ll,end=' ')
+#range(시작, 끝, 증감)
