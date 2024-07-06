@@ -5,7 +5,7 @@ m=int(m)
 time=int(time)
 def adjust(h,m,time):
     m2=m+time
-    if (m2>60):
+    if (m2>=60):
         h2=h+m2//60
         m2=m2%60
         if (h2>=24):
