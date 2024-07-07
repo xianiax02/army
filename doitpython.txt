@@ -26,7 +26,7 @@ a.index(찾으려는 값)
 a.insert(삽입 위치, 삽입 값)
 a.remove(값)-> 처음으로 나오는 값 삭제
 a.pop(값) (삭제하면서 없앰)
-a.count(값)
+a.count(값) !!
 a.extend(연장하고자 하는 리스트) 결국 합쳐진 하나의 리스트가 됨
 튜플
 t=(1,) or 1,2,3으로 표시 가능
@@ -41,5 +41,19 @@ a.get('key', 'default')없으면 디폴트 값 반환
 'key' in a
 집합
 set()
-
+s1&s2  s1.intersection(s2) 교집합
+s1|s2   s1.union(s2) 합집합
+s1-s2   s1.difference(s2) 차집합
+s1.add('value'), s1.update('value'), s1.remove('value')
+불자료형
+True  or  False
+뭐든지 0,empty 하면 False
+변수
+id(a) a의 메모리 주소 반환
+변수 복사하는 법
+b=a[:](리스트 전체)
+or from copy import copy
+copy(a)
+변수 선언 방법들..
+a, b = ('python', 'life')  (a, b) = 'python', 'life'  [a, b] = ['python', 'life']  a, b = b, a
 

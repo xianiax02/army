@@ -2,7 +2,10 @@
 python 코테시 런타임 줄이는 빠른 입출력 :
 sys.stdin.readline()<--한줄단위로 개행문자까지 같이 문자열형태로 입력받음
 a,b,c=map(int,sys.stdin.readline().split()) <--iterable object에 대해 각 element를 지정된 함수로 처리해주는 함수
+map(a,b)은 b의 각 요소에 a를 적용시켜주는 함수 (a는 직접 만들어줄 수도 있음 --> list(map(lambda x:x*2, a)) 처럼...(lamda x함수의 표현)
+반환값은 map object 이므로 이를 next() 또는 list()처럼 가공해야 출력할 수 있음.
+a1,a2,a3,a4,a5=map(...) 처럼 unpackaging 할 수도 있음.
 우선적으로 sys.stdin.readline().split()--> 반환값은 string 으로 이루어진 List임
 ->https://velog.io/@yeseolee/Python-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5-%EC%A0%95%EB%A6%ACsys.stdin.readline
 try except를 써보자
-chp.3 #12 for i in sys.stdin 의 이용 stdin 이 뭘까...
+chp.3 #12 for in sys.stdin 의 이용 stdin 이 뭘까...

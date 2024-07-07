@@ -14,7 +14,4 @@ for i in range(a):
 
 print(count)
 
-print(b.count(num))
-
-
     
