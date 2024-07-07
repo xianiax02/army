@@ -37,6 +37,7 @@ a.values()
 a.items()
 a.clear()
 a.get('key')(없으면 None)==a['key']((없으면 오류)
-
+a.get('key', 'default')없으면 디폴트 값 반환
+'key' in a
 
 
