@@ -2,6 +2,7 @@
 python 코테시 런타임 줄이는 빠른 입출력 :
 sys.stdin.readline()<--한줄단위로 개행문자까지 같이 문자열형태로 입력받음
 a,b,c=map(int,sys.stdin.readline().split()) <--iterable object에 대해 각 element를 지정된 함수로 처리해주는 함수
+우선적으로 sys.stdin.readline().split()--> 반환값은 string 으로 이루어진 List임
 ->https://velog.io/@yeseolee/Python-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%A0%A5-%EC%A0%95%EB%A6%ACsys.stdin.readline
 try except를 써보자
 chp.3 #12 for i in sys.stdin 의 이용 stdin 이 뭘까...
