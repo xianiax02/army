@@ -66,3 +66,17 @@ continue -> 다시 조건 검사시로 돌아가게 함.
 For
 for a in (iterable object) ->  iterable 를 첫 요소부터 마지막 요소까지 차례로 변수
 continue 사용 가능 
+range(a)--> range(0,a) 의 range 객체 만들어줌 (0이상 a미만)
+LIST COMPREHENSION --> [표현식 for 항목 in 반복_가능_객체 if 조건문]
+[x*y for x in range(2,10)
+...               for y in range(1,10)] 이것도 가능
+함수
+매개변수 개수를 모를때...
+def add_many(*args):  -> * 입력값을 모두 모아 튜플로 만들어줌
+def print_kwargs(**kwargs): ->키워드 매개변수, a=1을 입력하면 a:1 의 형태로 딕셔너리로 입력됨
+return 은 항상 하나이기 때문에 return a,b 를 하면 (a,b) 로 반환됨
+return 은 함수를 즉시 빠져나간다. 
+def func(a=b) -> 매개변수 초깃값 설정 ((name, age, man=True)항상 뒤에 넣어줘야함)
+전역변수 global
+lambda 예약어 -->함수_이름 = lambda 매개변수1, 매개변수2, ... : 매개변수를_이용한_표현식
+
