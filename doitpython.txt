@@ -157,3 +157,36 @@ def elapsed(함수):
 -->
 @elapsed
 def myfunc: -->이런식으로 myfunc를 수행하면 myfunc는 elapsed(myfunc)을 통해 수행됨
+이터레이터
+-> next() 함수 호출시 계속 다음 값을 리턴하는 객체
+반복가능하면 iter()로 이터레이터 객체로 만들 수 있음
+이터레이터는 클래스에 __iter__와 __next__라는 2개의 메서드를 구현하여 만들 수 있다
+# iterator.py
+class MyItertor:
+    def __init__(self, data):
+        self.data = data
+        self.position = 0
+
+    def __iter__(self): -->해당 메소드가 있는 클래스로 생성한 객체는 iterable 해짐
+        return self
+
+    def __next__(self): -->반복 가능한 객체의 값을 차례대로 반환하는 역할(for 문 또는 next 함수 호출시 수행됨)
+        if self.position >= len(self.data):
+            raise StopIteration
+        result = self.data[self.position]
+        self.position += 1
+        return result
+
+if __name__ == "__main__":
+    i = MyItertor([1,2,3])
+    for item in i:
+        print(item)
+제너레이터->이터레이터를 생성해주는 역할
+def mygen():
+	yield 'a'
+	yield 'b' -->차례대로 결과를 반환해주는 yield
+g=mygen() -->제너라이터 타입의 객체로 됨
+gen = (i * i for i in range(1, 1000)) <--제너레이터 표현식
+개발시 편의사항: 타입 어노테이션
+num: int = 1
+
