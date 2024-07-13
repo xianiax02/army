@@ -79,4 +79,43 @@ return 은 함수를 즉시 빠져나간다.
 def func(a=b) -> 매개변수 초깃값 설정 ((name, age, man=True)항상 뒤에 넣어줘야함)
 전역변수 global
 lambda 예약어 -->함수_이름 = lambda 매개변수1, 매개변수2, ... : 매개변수를_이용한_표현식
+입출력
+ print("life" "is" "too short") ==> +한것과 같음 ,는 띄어쓰기하고 붙이기
+open('주소/파일이름','r 또는 w 또는 a')--> file 객체
+open().write('contents')
+open().close()
+open().readlines() -> 파일의 모든 줄을 읽어서 각각의 줄을 요소로 가지는 리스트를 리턴 (readline()-> 첫번째 줄만 읽는다)
+with open("foo.txt", "w") as f:
+    f.write("Life is too short, you need python") -> close가 with를 벗어나는 순간 자동으로 나가짐
+명령 프롬프트에서 aaa.py arg1 이런식으로 실행하게 하는 법: 
+import sys
+args = sys.argv[1:]  <--(주소) aaa.py argv[1] argv[2] ....
 
+클래스
+a.setdata(p,q)에서 a는 self 매개변수로 간다.
+FourCal.setdata(a, 4, 2)  --> a.setdata(4, 2) a가 이미 드러나 첫번째 매개변수에 전달할 필요가 없음
+__init__  -> 생성자 (자동으로 호출되는 메소드, 인자를 저장하거나 등 )
+class NEW(OLD) :  --> 클래스의 상속 (메소드를 추가하거나, 기존 메소드의 이름으로 새로 def 하면 메소드 오버라이딩이 가능)
+모듈
+if __name__=='__main__' --> 파이썬 파일이 메인으로 수행될때에만 해당 구문 아래의 함수들 실행(모듈 호출시 자동 실행 방지)
+파일 경로 지정해주기 -> sys.path(는 파이썬 라이브러리가 저장된 디렉터리를 보여주는 리스트임) 여기에 모듈 디렉터리를 추가하면 됨
+sys.path.append(모듈경로)
+
+C:\doit>set PYTHONPATH=C:\doit\mymod(주소) 입력하는 방법도 됨
+패키지
+패키지는 여러 디렉토리로 이루어진 모듈 집합--> __init__ 폴더는 해당디렉터리가 패키지의 일부임을 명시, 없으면 패키지로 인식 안됨
+__init__ 에 공통 변수나 그런 값들을 넣을 수 있음 또는 자동으로 하부 모듈들을 임포트할 수 있음
+__all__ 디렉토리에는 import * 를 했을 때 import 되는 대상을 지정해줘야 함
+오류처리
+try:
+    4 / 0
+except ZeroDivisionError as e:
+    print(e)  --> 오류 내용과 변수를 설정하고 그때에만 except 문이 실행되게 할 수 있음
+finally--> 예외 발생 여부에 상관없이 항상 수행됨
+class Bird:
+    def fly(self):
+        raise NotImplementedError --> 일부러 오류를 발생시키는 경우 (상속 후 fly 메소드 오버라이팅 없이 호출하면 오류 발생)
+예외 만들기 --> class Myerror(Exception):  --> Exception 예외 클래스를 상속, 
+class MyError(Exception):
+    def __str__(self):
+        return "허용되지 않는 별명입니다." --> 오류 메세지가 출력되게 함
