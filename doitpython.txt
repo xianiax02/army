@@ -119,3 +119,25 @@ class Bird:
 class MyError(Exception):
     def __str__(self):
         return "허용되지 않는 별명입니다." --> 오류 메세지가 출력되게 함
+프로그램 짜기
+-> 재귀호출
+기타
+
+유니코드
+open('euc_kr.txt', encoding='euc-kr') (open 에는 인코딩 지정 기능 있음 -> utf-8 or euc-kr)
+편집기로 편집시 소스코드 인코딩 지정하는 법 # -*- coding: utf-8 -*-(기본값, 최상단에 배치) or # -*- coding: utf-8 -*-
+클로저
+함수를 찍어내는 클래스
+class Mul:
+    def __init__(self, m):
+        self.m = m
+
+    def __call__(self, n):
+        return self.m * n  -->  Mul 클래스로 만든 객체에 인수를 전달하여 바로 호출할 수 있도록 하는 메서드
+
+if __name__ == "__main__":
+    mul3 = Mul(3)
+    mul5 = Mul(5)
+
+    print(mul3(10))  # 30 출력
+    print(mul5(10))  # 50 출력
