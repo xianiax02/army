@@ -189,7 +189,7 @@ g=mygen() -->제너라이터 타입의 객체로 됨
 gen = (i * i for i in range(1, 1000)) <--제너레이터 표현식
 개발시 편의사항: 타입 어노테이션
 num: int = 1
-정규 표현식(re모듈 이용)
+정규 표현식(re모듈 이용)->  p=re.compile('정규표현식')--> 패턴 객체 라고 함
 문자클래스 []-> [a-zA-Z] : 모든 알파벳, [^0-9]숫자가 아닌 것
 \d ->숫자 ==[0-9]
 \D ->숫자가 아닌 것 ==[^0-9]
@@ -202,3 +202,35 @@ num: int = 1
 a* a가 몇개인지 상관없다(0번도 가능)
 a+ a가 최소 한번 이상 반복될때
 {m, n} 정규식을 사용하면 반복 횟수가 m부터 n까지인 문자->+=={1,},*=={0,},?=={0,1}
+p.match('문자열') 문자열 처음부터 정규표현식과 매치되는지 확인
+.search()->문자열 전체를 검색하여 정규식과 매치되는지 조사
+.findall()->정규식과 매치되는 모든 문자열(substring)을 리스트로 리턴
+.finditer()->정규식과 매치되는 모든 문자열(substring)을 반복 가능한 객체로 리턴
+->해당 명령어들은 모두 match객체를 반환함
+match의 메소드
+group()->매치된 문자열을 리턴
+start()->매치된 문자열의 시작위치를 리턴
+end()->매치된 문자열의 끝 위치를 리턴한다
+span()->매치된 문자열의 (시작,끝)에 해당하는 튜플을 리턴
+>>> p = re.compile('[a-z]+')
+>>> m = p.match("python")
+->
+>>> m = re.match('[a-z]+', "python") 으로 줄일 수도 있음
+p=re.compile('정규표현식',re.(컴파일옵션)) 으로 컴파일 옵션 추가가능
+DOTALL(S)->.이 줄바꿈 문자를 포함해 모든 문자와 매치될 수 있게 함
+IGNORECASE(I)->대소문자에 관계없이 매치될 수 있게 함
+MULTILINE(M)->여러줄과 매치될 수 있게 함 ^(문자열의 처음) $(문자열의 마지막) (각줄의 처음)
+VERBOSE(X)->verbose모드를 사용할 수 있게 함(주석등 가능)
+charref = re.compile(r"""
+ &[#]                # Start of a numeric entity reference
+ (
+     0[0-7]+         # Octal form
+   | [0-9]+          # Decimal form
+   | x[0-9a-fA-F]+   # Hexadecimal form
+ )
+ ;                   # Trailing semicolon
+""", re.VERBOSE)
+-->이런식
+\\는 두번으로 이스케이프 처리해주는데 파이썬 리터럴 규칙에 따라 또 먹힘
+>>> p = re.compile(r'\\section')-> raw string규칙으로 4개 쓸 필요 없이 작성 가능
+ 
