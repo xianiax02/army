@@ -1,10 +1,17 @@
 import sys
-List=[]
-remainder=[]
-for i in range(10):
-    num=int(sys.stdin.readline())
-    List.append(num)
-    remainder.append(num%42)
-sets=set(remainder)
-print(len(sets))
+m,n=input().split()
+m=int(m)
+n=int(n)
+baskets=[]
+for i in range(m):
+    baskets.append(i+1)
+
+for a in range(n):
+    i,j=list(map(int,sys.stdin.readline().split(' ')))
+    change=baskets[i+1:j+2]
+    change.reverse()
     
+for i in range(m):
+    print(baskets[i],end=' ')
+
+
