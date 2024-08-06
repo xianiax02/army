@@ -13,10 +13,10 @@ maxnum=max(wordcount)
 #wordcountrev.reverse()
 #if wordcount.index(maxnum)+wordcountrev.index(maxnum)==len(wordcount):
 #만약 문자열이 두개가 중복되는 것이 있다면 a.index와 a.reverse().index 값은 합이 len(a)가 안됨-> 아이건 wordcount가 대칭이면 안되네..
-#지우고 맥시멈이 지원진 값과 다르면 유일한 거로 판정하는 방법으로 가야겠다.
+#지우고 맥시멈이 지워진 값과 다르면 유일한 거로 판정하는 방법으로 가야겠다.
+result=list(wordset)[wordcount.index(maxnum)]
 wordcount.remove(maxnum)
-if max(wordcount)==maxnum:
+wordcount.append(0) #단어가 하나여서 wordcount 가 빈 리스트가 되는 경우를 제외
+if max(wordcount)==maxnum: #여기에 빈리스트인 케이스를 추가해도 좋음 
     result='?'
-else:
-    result=list(wordset)[wordcount.index(maxnum)]
 print(result)
