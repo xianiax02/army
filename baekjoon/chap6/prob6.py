@@ -1,37 +1,17 @@
-def judge(word,alphabet): #해당 알파벳이 단어에서 그룹단어의 요소를 충족시키는지 체크
-    indexlist=[]
-    result=None
-    for i in range(len(word)):
-        if word[i]==alphabet:
-            indexlist.append(i)
-        for i in range(len(indexlist)):
-            if indexlist[i]+1!=indexlist[i+1]: #이게 문제
-                result=False
-            else:
-                result=True
-        return result
-#check weather it is group word
-def check(word): #결국 그룹단어냐 아니냐의 핵심은 같은 단어가 서로 떨어져있는가 아닌가
-        #같은 단어를 체크한 후 그 단어의 인덱스를 모두 확인해서 그 단어가 서로 인접해 있지 않음을 증명
-    doubled=[]
-    result=None
-    for i in word:
-        if word.count(i)>=2:
-            doubled.append(i) #doubled에는 중복되는 단어들만 모이게 됨
+#일단 문자열에 해당 크로아티아가 존재하는지 체크, 체크하면서 2개짜리 카운트
+#와 3개짜리 카운트를 분리해서 2개까지 카운트만큼 갯수를 뺴고, 3개짜리만큼 2개씩 빼자
+#크로아티아 리스트
+clist=['c=','c-','d-','lj','nj','s=','dz=','z=']
+sentence=input()
+#count2=0
+#count3=0
+a=sentence[:]
+for i in clist: #아...이러면 2개있을 경우를 못센다 #그럼 그냥 크로아티아 문자를 생판 모르는 문자로 바꿔서 그 문자를 세자
+    if i in sentence: #또,,, z=와 dz=가 문제다... z=는 따로 빼서 해보자 아니지 'dz='를 최우선으로 하면 된다 리스트 순서고치자
+        a=a.replace(i,'*')
 
-    for i in doubled:
-        a=judge(i,word)
-        if a==True:
-            result=True
-        else:
-            result=False
-            break #하나라도 아니라면 바로 탈출
-        return result
 
-num=int(input())
-count=0
-for i in range(num):
-    a=input()
-    if check(a):
-        count+=1
-print(count)
+result=len(a)
+print(result)
+        
+    
