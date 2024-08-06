@@ -4,11 +4,14 @@ def judge(word,alphabet): #해당 알파벳이 단어에서 그룹단어의 요�
     for i in range(len(word)):
         if word[i]==alphabet:
             indexlist.append(i)
-        for i in range(len(indexlist)):
-            if indexlist[i]+1!=indexlist[i+1]: #이게 문제
-                result=False
-            else:
-                result=True
+    while 
+    for i in range(len(indexlist)):
+        a=indexlist[i]
+        b=None #전에 저장한 인덱스
+        if b+1==a:#이게 문제 일단 indexlist는 최소 2개임
+            result=False
+        else:
+            result=True
         return result
 #check weather it is group word
 def check(word): #결국 그룹단어냐 아니냐의 핵심은 같은 단어가 서로 떨어져있는가 아닌가
@@ -18,6 +21,7 @@ def check(word): #결국 그룹단어냐 아니냐의 핵심은 같은 단어가
     for i in word:
         if word.count(i)>=2:
             doubled.append(i) #doubled에는 중복되는 단어들만 모이게 됨
+            doubled=list(set(doubled)) #중복되는 거 하나씩 만 만들기
 
     for i in doubled:
         a=judge(i,word)
