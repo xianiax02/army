@@ -16,3 +16,8 @@ chp.5 #2 --> sys.stdin.readline()으로 받아들일때 \n 까지 받아들여지는 것 주의
 chp.5 #4 알고리즘 짤때는 분기점을 잘 파악하자.
 chp.5 #7 'split으로 받아들이면 ' '은 ''이 됨 
 chp.6 #5 중복 체크 위해 하나를 빼면서 검사하면 남은건 그 요소가 사라져있음 유의하기
+chp.6 #7 enumerate 내장함수, indexlist = [i for i, char in enumerate(word) if char == alphabet]이렇게 표현도 가능하구나, not 쓰는 것도 유의
+main()함수 선언하고 __name__="__main__": main()
+index(i+1) 로 인해서 벗어날 거 같았으면 i+1<=len(indexlist) 를 만족하는 range(len(indexlist)-1)로 해결하지...
+같은거 리스트에 중복해서 넣을 거 아니면 set써라!!
+input().strip()-->주변 띄어쓰기 지워줌
