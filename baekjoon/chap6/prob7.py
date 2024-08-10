@@ -17,7 +17,7 @@ def check(word): #결국 그룹단어냐 아니냐의 핵심은 같은 단어가
             doubled.add(word[i]) #doubled에는 중복되는 단어들만 모이게 됨
             #이미 처음부터 set으로 만들면 필요없음 doubled=list(set(doubled)) #중복되는 거 하나씩 만 만들기
 
-    for char in doubled:
+    for char in list(doubled):
         if not judge(word,char):
             return False
         #a=judge(i,word)
@@ -26,7 +26,7 @@ def check(word): #결국 그룹단어냐 아니냐의 핵심은 같은 단어가
         #else:
          #   result=False
           #  break #하나라도 아니라면 바로 탈출
-        return True
+    return True
 
 num=int(input())
 count=0
