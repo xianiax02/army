@@ -7,7 +7,7 @@ def judge(word,alphabet): #해당 알파벳이 단어에서 그룹단어의 요�
     for i in range(len(indexlist)-1):
         if (indexlist[i]+1!=indexlist[i+1]):
              return False  #return 써서 바로 탈출
-        return True
+    return True
 #check weather it is group word
 def check(word): #결국 그룹단어냐 아니냐의 핵심은 같은 단어가 서로 떨어져있는가 아닌가
         #같은 단어를 체크한 후 그 단어의 인덱스를 모두 확인해서 그 단어가 서로 인접해 있지 않음을 증명
