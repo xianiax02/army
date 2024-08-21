@@ -21,3 +21,8 @@ main()함수 선언하고 __name__="__main__": main()
 index(i+1) 로 인해서 벗어날 거 같았으면 i+1<=len(indexlist) 를 만족하는 range(len(indexlist)-1)로 해결하지...
 같은거 리스트에 중복해서 넣을 거 아니면 set써라!!
 input().strip()-->주변 띄어쓰기 지워줌
+chap.7 #2
+ if len(row) != n:
+            raise ValueError("Number of columns does not match the specified value.")
+와 같이 통상적으로 예상 가능한 오류에 대해 대비하는 습관 들이면 좋음
+max 함수는 iterable 객체에 대해 lenght, 첫 값(아스키코드등) 을 기준으로 비교함
