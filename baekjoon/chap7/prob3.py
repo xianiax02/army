@@ -11,6 +11,12 @@ def createmat(m): #입력할 행렬의 행 수를 받으면 해당 행 만큼의
 
     return matrix
 
+def creatematstr(m):
+    mat=[]
+    for i in range(m):
+        mat.append(input())
+    return mat
+
 def addmat(matrix1,matrix2):
     result=[]
     for i in range(len(matrix1)): #각 행마다
@@ -43,7 +49,21 @@ def findmax(mat):
     m+=1
     n+=1
     return maxnum,m,n
-mat=createmat(9)
-maxnum,m,n=findmax(mat)
-print(maxnum)
-print(m,n)
+
+
+def printvert(mat):
+    m=len(mat)
+    comlen=[]
+    for i in mat:
+        comlen.append(len(i))
+
+    maxlength=max(comlen)
+    for i in range(maxlength):
+        for j in range(m):
+            try:
+                print(mat[j][i],end='')
+            except:
+                pass
+mat=creatematstr(5)
+printvert(mat)
+            
