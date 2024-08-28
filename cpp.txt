@@ -1,0 +1,6 @@
+6강
+sizeof 연산자 sizeof(x)-> x의 크기를 알려줌 (변수, 자료형 대입 가능)
+정수형 자료형
+int=4byte char=1byte float=4byte double=8byte
+정수/정수=> 정수
+double avg = (double)sum/3; 하면 sum의 값을 연산이 진행되는 동안 double로 간주함.
