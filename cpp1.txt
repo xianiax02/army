@@ -70,20 +70,23 @@ printf('%s',str);--> %s는 널문자가 나올때까지 계속 출력해준다
 int a=printf("aaa\n"); printf("%d",a);--> 갯수인 4가 출력됨
 main함수는 자동으로 0을 return 한다.
 33강 callbyvalue , callbyreference
-함수에 매개인자를 전달할때 그 값''이 전달되는 것!--> 포인터를 통해서 바꾼다 --> callbyreference(주솟값 자체는 같으므로)
+함수에 매개인자를 전달할때 그 값''이 전달되는 것!callbyvalue--> 포인터를 통해서 바꾼다 --> callbyreference(주솟값 자체는 같으므로)
+c++에서는 굳이 *를 써서 포인터 변수를 명시하지 않고 reference 변수 &를 써서 int &x 으로 int *x 와 *x를 나타낸다.
 34강. 프로토타입
 ->함수가 어떻게 생겼는지 간단하게 표현하는 것 , 함수가 서로 호출할때 그 순서는 어떻게 해야할 것인가
 void walk(int angle); 이런식으로 내용 생략하고 간단하게 선언만 하기(나중에 정의하면 됨)
 35강.재귀함수 초깃값 if문으로 설정하기
 36강.배열 매개변수로 넘기기
 printarr(int arr[4])==printarr(int *arr)
-*arr==&arr[0]
+(int ptr[4] == int[4]인 배열의 포인터 임을 유의)
+arr[i]==*(arr+i)
+arr==&arr[0]
 2차원 배열은 배열포인터로 넘길 수 있다. 
 &arr[0]==*arr[3]
 38강 typedef
 typedef int int32 --> int 라는 것을 int32로 사용할 수 있다...
-typedef int Pair[2]; Pait point={3,4};--> int point[2]={3,4}
-char *name="doodle"==char name[]="doodle"
+typedef int Pair[2]; Pair point={3,4};--> int point[2]={3,4}
+char *name="doodle"==char name[]="doodle" (char 형 포인터에 문자열을 담을 수 있다,char형 배열과 같으므로)
 39강 구조체
 typedef struct {int x,y;} Pair;==struct Point{intx,y;};
 Pair p;
@@ -234,7 +237,11 @@ int *a = new int(5);
 int *b = new int(3);
 얕은복사-> a = b; //얕은 복사(참조만 복사) callbyvalue --> 복사된 값에 의존적임. 기존 값이 변경되면 같이 변경됨
 깊은복사-> *a=*b; // 깊은 복사 (값을 복사) callbyreference --> 완전히 새로운 값이 생성됨. 별개의 값
-String(const char *str){
+설명: *a=100(번지수), *b=200; 100번지에는 int 5, 200번지에는 int 3이 존재한다.
+이때 a=b;하면 참조(번지수만 보갓되어 둘다 200을 갖게 됨.
+-> 이때 5가 지칭받는 포인터가 사라져 다룰 수 없게 되고, delete a;를 했을 때 3이 해제되어 delete b;를 하면 포인터를 따라가도 데이터가 없어 런타임 오류가 됨
+*a=*b;를 해서 그 데이터 자체를 복사하면 깊은 복사가 됨
+String(const char *str상수형 캐릭터를 가리키는 포인터 라는 뜻){
 	len=strlen(str);
 	strData= new char[len+1];
 	strcpy(strData,str); --> 깊은 복사
@@ -280,6 +287,9 @@ String &operator=(String &&rhs){
         strcpy(strData,rhs.strData);
         }
         return *this;
+lvalue는 메모리의 특정 주소를 갖고 있는 값이고, rvalue는 특정주소를 갖고 있지 않은 일시적인 값
+참조 매개변수 &&는 이러한 rvalue reference를 지칭할 수 있고,
+&는 lvalue reference를 할 수 있는 연산자이다.
 71강. (암시적)묵시적 형변환 implicit conversion
 변환 생성자
 class Item{
@@ -289,7 +299,7 @@ public:
      } --> 변환생성자((Item)4; 와 같이 다른 자료형을 Item 으로 변환시킬때 호출됨 역할에 따라 그냥 생성자가 될 수도 변환 생성자가 될수도 (변환을 담당할 수 있는 생성자면 변환 생성자가 됨)
     Item(string name): name(name){
         cout<<"Item(string)"<<endl;
-    }-->마찬가지로 string에서의 변환생성자 (i5=(stirng)"stone";)
+    }-->마찬가지로 string에서의 변환생성자 (i5=(string)"stone";)
     Item(int num, string name): num(num),name(name){
         cout<<"Item(int,string)"<<endl;
     }
@@ -305,7 +315,7 @@ Item i4=(Item)4;-->명시적변환
 int itemNum=(int)i8; 의 경우에도 int는 연산자이므로 마찬가지로 오버로딩을 해줄 수 있다. 
 operator int() const{
 어차피 int로 반환될 것임이 함수 특성상 내포되어 있어서 앞에 반환타입을 적지 않고 뒤에 적음
-또한 형변화 연산자는 기존 객체를 변형시키지 않으므로 안전장치로 const 붙이는게 좋음
+또한 형변환 연산자는 기존 객체를 변형시키지 않으므로 안전장치로 const 붙이는게 좋음
     return num;
 }
 int itemNum1=(int)i8;
@@ -325,7 +335,7 @@ class Derived : public Base {
 77강. 오버라이딩과 정적 바인딩
 override=우선하다
 부모 클래스와 자식 클래스에 같은 이름의 멤버 변수가 있는 경우 base.a==derived.a? --> derived 에서 정의된 a가 출력됨(우선됨) base.base::a 하면 부모 클래스거 출력됨
-오버로딩--> 함수에서 우선되는 개념, 오버ride: 상속에서 우선되는 개념(덮여쓰이는게 아님) 
+오버로딩--> 함수에서 우선되는 개념, 오버ride: 상속에서 우선되는 개념(덮어쓰이는게 아님) 
 정적바인딩-->b->print()처럼 모호한 서술이 나왔을때 b를 어떻게 취급(바인딩) 할 것인가?-->다 부모클래스로 간주하자(정적)
 Derived d;
 Base *b=&d; --> 부모클래스 타입 포인터가 자식을 가리킬 수 있음
