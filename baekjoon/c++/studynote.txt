@@ -1,0 +1,7 @@
+#inlcude<cmath>
+pow(10,2);
+sqrt(9);
+#include<typeinfo>
+decltype(a)name;
+typeid(name).name=='int'
+perfectquare개념 --> 묵시적 형변환을 정의를 이용해서 재검사함으로써 완벽한 제곱근을 검사
